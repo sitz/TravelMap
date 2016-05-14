@@ -1,17 +1,17 @@
 <html>
 
 <head>
-	<title>Travel Map</title>
-	<script src="scripts/d3.min.js"></script>
-	<script src="scripts/topojson.min.js"></script>
-	<script src="scripts/datamaps.world.min.js"></script>
+    <title>Travel Map</title>
+    <script src="scripts/d3.min.js"></script>
+    <script src="scripts/topojson.min.js"></script>
+    <script src="scripts/datamaps.world.min.js"></script>
 </head>
 <style type="text/css">
-	#container {
-		position: relative;
-		width: 100%; 
-		height: 90%;
-	}
+    #container {
+        position: relative;
+        width: 100%;
+        height: 90%;
+    }
 </style>
 
 <body>
@@ -19,28 +19,29 @@
 <h3 align="center"></h3>
 <script>
     var map = new Datamap({
-    	element: document.getElementById('container'),
-    	fills: {
-    		defaultFill: 'skyblue',
-    		travelled: 'black'
-    	},
-    	data: {
-    		IND: { fillKey: "travelled" }
-    	},
-    	geographyConfig: {
-	        popupTemplate: function(geography, data) {
-	          return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
-	        },
-	        popupOnHover: true,
-	        highlightOnHover: true,
-    	},
+        element: document.getElementById('container'),
+        fills: {
+            defaultFill: 'skyblue',
+            travelled: 'black'
+        },
+        data: {
+            IND: {fillKey: "travelled"},
+            USA: {fillKey: "travelled"}
+        },
+        geographyConfig: {
+            popupTemplate: function (geography, data) {
+                return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
+            },
+            popupOnHover: true,
+            highlightOnHover: true
+        }
     });
     document.body.querySelector('h3').innerText =
-    	"World Travel Stats (" + 
-    	Object.keys(window.map.options.data).length + 
-    	" / " + 
-    	window.Datamap.prototype.worldTopo.objects.world.geometries.length + 
-    	")";
+            "World Travel Stats (" +
+            Object.keys(window.map.options.data).length +
+            " / " +
+            window.Datamap.prototype.worldTopo.objects.world.geometries.length +
+            ")";
 </script>
 
 </body>
