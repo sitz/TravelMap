@@ -23,6 +23,7 @@
 <script>
     var map = new Datamap({
         element: document.getElementById('container'),
+        projection: 'mercator',
         fills: {
             defaultFill: 'skyblue',
             travelled: 'darkgreen'
@@ -61,13 +62,6 @@
             ISL: {fillKey: "travelled"},
             PRT: {fillKey: "travelled"},
             VAT: {fillKey: "travelled"},
-        },
-        geographyConfig: {
-            popupTemplate: function (geography, data) {
-                return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
-            },
-            popupOnHover: true,
-            highlightOnHover: true
         }
     });
     document.body.querySelector('h3').innerText = `World Travel Stats (${Object.keys(window.map.options.data).length} / ${window.Datamap.prototype.worldTopo.objects.world.geometries.length})`;
